@@ -17,9 +17,9 @@
 ## along with this library.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-BINARY = main
+BINARY ?= main
 
-OBJS = HAL.o comm.o neuron.o
+OBJS = HAL.o comm.o neuron.o izhi.o
 
 OPENCM3_DIR = ../libopencm3
 
