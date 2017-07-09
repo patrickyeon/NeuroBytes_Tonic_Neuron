@@ -21,10 +21,15 @@ int main(void)
 		{
 			main_tick = 0;
 			step_i(&neuron, 10 * neuron.scale, 3);
-			// hacky, but ledval will be roughly in the -400..400 range
-			int32_t ledval = neuron.potential >> 18; 
-			ledval += 400;
-			setLED((uint16_t)ledval);
+			// have the LED in R, G, B for the rest, transition, spike regions
+			//  respectively
+			if (neuron.potential < -60 * neuron.scale) {
+				setLED(1000, 0, 0);
+			} else if (neuron.potential < -40 * neuron.scale) {
+				setLED(0, 1000, 0);
+			} else {
+				setLED(0, 0, 1000);
+			}
         }
 	}
 }
